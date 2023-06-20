@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        console.log(this);
+        class person {
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            speak(){
+                console.log(this);
+            }
+        }
+
+        const s1 = new person('张三',18)
+        s1.speak()
+        const x = s1.speak
+        x()
+
+        const p = new person()
+        p.speak()
+
+    //   ReactDOM.render(vdom,document.getElementById('root'))
+    </script>
+  </body>
+</html>

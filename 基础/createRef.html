@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ref</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Demo extends React.Component{
+            // 调用后可以返回一个容器，该容器可以存储被ref所标识的节点
+            myRef = React.createRef()
+
+            showData = () => {
+               console.log(this.myRef.current.value);
+               alert(this.myRef.current.value)
+            }
+            render(){
+                return (
+                    <div>
+                        <input ref={this.myRef} type="text" placeholder="点击按钮提示数据" /> &nbsp;
+                        <button onClick={this.showData}>点击提示左侧数据</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById("root"))
+      
+    </script>
+  </body>
+</html>

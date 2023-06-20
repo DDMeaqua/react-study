@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Demo extends React.Component{
+
+            state = {ishot:true}
+
+            showInfo = () => {
+                console.log(this.input1);
+                alert(this.input1.value)
+            }
+
+            change = () => {
+                this.setState({ishot:!this.state.ishot})
+            }
+
+            saveInput = (c) => {
+                this.input1 = c
+                console.log("@",c);
+            }
+
+            render(){
+                return (
+                    <div>
+                        {/* <input ref={(c) => (this.input1 = c , console.log("@",c))} type="text" /> */}
+                        <input ref={this.saveInput} type="text" />
+                        <button onClick={this.showInfo}>点击提示数据</button>
+                        <h1 onClick={this.change}>今天天气很{this.state.ishot ? "炎热":"凉爽"}</h1>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById("root"))
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Demo extends React.Component{
+            showData = () => {
+                console.log(this.refs.input1);
+                alert(this.refs.input1.value)
+            }
+            showData2 = () => {
+                alert(this.refs.input2.value)
+            }
+            render(){
+                return (
+                    <div>
+                        <input ref="input1" type="text" placeholder="点击按钮提示数据" />
+                        <button onClick={this.showData}>点击提示左侧数据</button>
+                        <input onBlur={this.showData2} ref="input2" type="text" placeholder="失去焦点提示数据" />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Demo />, document.getElementById("root"))
+      
+    </script>
+  </body>
+</html>

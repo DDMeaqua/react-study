@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Weater extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            ishot: true,
+            wind: "微风"
+          };
+          this.check = this.check.bind(this);
+        }
+
+        check() {
+            // console.log(this);
+            // 不能直接更改state的值
+            // this.state.ishot = !this.state.ishot
+            // console.log(this.state.ishot);
+
+            // 通过setState更改state的值
+            this.setState({
+                ishot: !this.state.ishot
+            })
+        }
+
+        render() {
+          return (
+            <div>
+              <h1 onClick={this.check}>
+                今天的天气{this.state.ishot ? "炎热" : "凉爽"},{this.state.wind}
+              </h1>
+            </div>
+          );
+        }
+      }
+
+
+      ReactDOM.render(<Weater />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

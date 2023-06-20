@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        class person {
+            constructor(name,age){
+                this.name = name
+                this.age = age
+            }
+            speak(){
+                console.log('我是'+this.name+'我今年'+this.age+'岁了');
+            }
+        }
+
+        class student extends person {
+            constructor(name,age,grade){
+                super(name,age)
+                this.grade = grade
+            }
+            speak(){
+                console.log(`我是${this.name}我今年${this.age}岁了,我在读${this.grade}年级`);
+            }
+            study(){
+                console.log('我在学习');
+            }
+        }
+
+        const s1 = new student('张三',18,"三")
+        console.log(s1);
+        s1.speak()
+        s1.study()
+
+    //   ReactDOM.render(vdom,document.getElementById('root'))
+    </script>
+  </body>
+</html>
