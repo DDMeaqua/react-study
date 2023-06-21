@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    //非受控组件
+      class Login extends React.Component{  
+        handleSubmit = (event) => {
+            event.preventDefault() //阻止表单提交
+            const {username,password} = this
+            alert(`用户名：${username.value} 密码：${password.value}`)
+        }
+        render(){
+            return(
+                <form action="http://www.atguigu.com" onSubmit={this.handleSubmit}>
+                    用户名：<input ref={(c)=>{this.username = c}} type="text" name="username" />    
+                    密码：<input ref={(c)=>{this.password = c}} type="password" name="password" />
+                    <button>登陆</button>
+                </form>
+            )
+        }
+      }
+      
+
+      ReactDOM.render(<Login />,document.getElementById('root'))
+    </script>
+  </body>
+</html>
