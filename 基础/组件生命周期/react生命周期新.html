@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Count extends React.Component{
+
+        constructor(props){
+          console.log("constructor");
+          super(props)
+          this.state = {
+            count: 0
+          }
+        }
+
+        add = ()=> {
+            const {count} = this.state
+            this.setState({count: count + 1})
+        }
+        
+        death = () => {
+          // 卸载组件
+          ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+        };
+
+        // 组件将要挂载
+        UNSAFE_componentWillMount(){
+            console.log('componentWillMount');
+        }
+
+        // 组件挂载完毕
+        componentDidMount(){
+            console.log('componentDidMount');
+        }
+
+        // 组件将要卸载
+        componentWillUnmount(){
+            console.log('componentWillUnmount');
+        }
+
+        // 组件将要更新
+        shouldComponentUpdate(){
+            console.log('shouldComponentUpdate');
+            return true   //控制是否更新的阀门
+        }
+
+        // 组件更新完毕
+        componentDidUpdate(){
+            console.log('componentDidUpdate');
+        }
+
+        force = () => {
+            this.forceUpdate()
+        }
+
+        // 组件强制更新
+        forceUpdate(){
+            console.log('forceUpdate');
+        }
+
+        render(){
+            console.log("render");
+            const {count} = this.state
+            return (
+                <div>
+                    <h2>当前求和为：{count}</h2>
+                    <button onClick={this.add}>点我+1</button>
+                    <button onClick={this.death}>卸载组件</button>
+                    <button onClick={this.force}>不更改任何数据，强制更新</button>
+                </div>
+            )
+        }
+      }
+
+      // 父组件
+      class A extends React.Component{
+        state = {carName:"奔驰"}
+
+        changeCar = ()=>{
+          this.setState({carName:"迈巴赫"})
+        }
+
+        render(){
+          return (
+            <div>
+              <div>我是A组件</div>
+              <button onClick={this.changeCar}>换车</button><br />
+              <div>-------------------------------</div>
+              <B carName={this.state.carName} />
+            </div>
+          )
+        }
+      }
+
+      // 子组件
+      class B extends React.Component{
+        //  组件将要接收新的props数据
+        UNSAFE_componentWillReceiveProps(props){
+          console.log("B---componentWillReceiveProps",props);
+        }
+
+        // 组件是否应该更新
+        shouldComponentUpdate(){
+            console.log('shouldComponentUpdate');
+            return true   //控制是否更新的阀门
+        }
+
+        // 组件将要更新
+        UNSAFE_componentWillUpdate(){
+            console.log('componentWillUpdate');
+        }
+
+        // 组件更新完毕
+        componentDidUpdate(){
+            console.log('componentDidUpdate');
+        }
+
+        render(){
+          console.log("B---render");
+          return (
+            <div>我是B组件,接收到的车是：{this.props.carName}</div>
+          )
+        }
+      }
+
+      // ReactDOM.render(<Count />, document.getElementById("root"))
+      ReactDOM.render(<A />, document.getElementById("root"))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>react</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class Life extends React.Component {
+        state = { opacity: 0.5 };
+
+        death = () => {
+          // 卸载组件
+          ReactDOM.unmountComponentAtNode(document.getElementById("root"));
+        };
+
+        // 组件挂载完毕
+        componentDidMount() {
+          console.log("组件挂载完毕");
+          setInterval(() => {
+            let { opacity } = this.state;
+            opacity -= 0.1;
+            // 设置新的透明度
+            if (opacity <= 0) {
+              opacity = 1;
+            }
+            // 设置新的透明度
+            this.setState({ opacity });
+          }, 500);
+        }
+
+        render() {
+          console.log("render函数被调用了");
+          // setInterval(() => {
+          //     let {opacity} = this.state
+          //     opacity -= 0.1
+          //     // 设置新的透明度
+          //     if(opacity <= 0){
+          //         opacity = 1
+          //     }
+          //     // 设置新的透明度
+          //     this.setState({opacity}) //更新状态会触发render 触发render会重新执行setInterval
+          // }, 500);
+
+          return (
+            <div>
+              <h2 style={{ opacity: this.state.opacity }}>
+                React 学不会怎么办？
+              </h2>
+              <button onClick={this.death}>不活了</button>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Life />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
