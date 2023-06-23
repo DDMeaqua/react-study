@@ -32,9 +32,15 @@
           ReactDOM.unmountComponentAtNode(document.getElementById("root"));
         };
 
-        // 组件挂载完毕
-        componentDidMount(){
-            console.log('componentDidMount');
+        static getDerivedStateFromProps(props){
+            console.log('getDerivedStateFromProps',props);
+            return null   //返回状态对象
+        } 
+
+        // 在更新前获取快照
+        getSnapshotBeforeUpdate(){
+            console.log('getSnapshotBeforeUpdate');
+            return '我是getSnapshotBeforeUpdate返回的数据'
         }
 
         // 组件是否要更新
@@ -44,14 +50,9 @@
         }
 
         // 组件更新完毕
-        componentDidUpdate(){
-            console.log('componentDidUpdate');
+        componentDidUpdate(preProps,preState,snapshotValue){
+            console.log('componentDidUpdate',preProps,preState,snapshotValue);
         }
-
-        static getDerivedStateFromProps(props){
-            console.log('getDerivedStateFromProps',props);
-            return props   //返回状态对象
-        } 
 
         render(){
             console.log("render");
