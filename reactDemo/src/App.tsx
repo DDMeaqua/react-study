@@ -9,6 +9,7 @@ import FormatDate from './components/FormatDate'
 import JSX from './components/JSXtest'
 import Profile from './components/Profile'
 import Pro from './components/Pro'
+import Gallery from './components/UseState'
 
 
 function App() {
@@ -56,6 +57,8 @@ function App() {
       <Profile />
 
       <Pro />
+
+      <Gallery />
       
     </>
   )
