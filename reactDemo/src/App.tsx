@@ -7,6 +7,8 @@ import State from './components/State'
 import Photo from './components/TodoList'
 import FormatDate from './components/FormatDate'
 import JSX from './components/JSXtest'
+import Profile from './components/Profile'
+import Pro from './components/Pro'
 
 
 function App() {
@@ -50,6 +52,10 @@ function App() {
       <FormatDate />
 
       <JSX />
+
+      <Profile />
+
+      <Pro />
       
     </>
   )
