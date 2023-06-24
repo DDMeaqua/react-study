@@ -4,6 +4,7 @@ import { sculptureList } from './data.js';
 export default function Gallery() {
   const [index, setIndex] = useState(0);
   const [showMore, setShowMore] = useState(false);
+  const [number, setNumber] = useState(0);
 
   function handleClick() {
     setIndex(index + 1);
@@ -37,6 +38,19 @@ export default function Gallery() {
         src={sculpture.url} 
         alt={sculpture.alt}
       />
+      </div>
+
+      <div className='flex border-2'>
+        <h1 className="text-3xl m-2">{number}</h1>
+        <button
+        className="border-2 border-yellow-400 p-2 m-2"
+          onClick={() => {
+            setNumber(number + 5);
+            alert(number);
+          }}
+        >
+          +5
+        </button>
       </div>
     </>
   );

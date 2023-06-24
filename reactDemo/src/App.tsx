@@ -10,6 +10,10 @@ import JSX from './components/JSXtest'
 import Profile from './components/Profile'
 import Pro from './components/Pro'
 import Gallery from './components/UseState'
+import SetTimeout from './components/SetTimeout'
+import Updating from './components/Updating'
+import Array from './components/Array'
+import Input from './components/Input'
 
 
 function App() {
@@ -59,6 +63,14 @@ function App() {
       <Pro />
 
       <Gallery />
+
+      <SetTimeout />
+
+      <Updating />
+
+      <Array />
+
+      <Input /> 
       
     </>
   )
