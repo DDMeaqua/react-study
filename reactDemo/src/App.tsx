@@ -14,6 +14,8 @@ import SetTimeout from './components/SetTimeout'
 import Updating from './components/Updating'
 import Array from './components/Array'
 import Input from './components/Input'
+import { Link } from "react-router-dom";
+import Routertest from  "./components/Routertest";
 
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
 
   return (
     <>
+      <Routertest />
+
       <div className='flex'>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className=" w-32 logo" alt="Vite logo" />
@@ -71,6 +75,8 @@ function App() {
       <Array />
 
       <Input /> 
+
+      
       
     </>
   )
