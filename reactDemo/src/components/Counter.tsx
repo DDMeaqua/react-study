@@ -1,14 +1,21 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import TestContext from '../store/createContext'
 
 export default function Counter(props) {
+
+  const ctx = useContext(TestContext);
+
   // console.log(props.meal);
   // console.log(props.onAdd);
   const addButton = ()=>{
-    props.onAdd(props.meal)
+    ctx.addItem(props.meal)
+    // console.log(ctx);
+    
   }
 
   const subButton = ()=>{
-    props.onSub(props.meal)
+    // props.onSub(props.meal)
+    ctx.removeItem(props.meal)
   }
 
   return (

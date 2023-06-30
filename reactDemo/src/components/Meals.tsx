@@ -5,7 +5,7 @@ export default function Meals(props) {
 
   return (
     <div>
-      {props.mealsData.map(item => <Meal onSub={props.onSub} onAdd={props.onAdd} key={item.id} meal={item} />)}
+      {props.mealsData.map(item => <Meal key={item.id} meal={item} />)}
     </div>
   )
 }

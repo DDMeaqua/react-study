@@ -13,7 +13,7 @@ export default function Meal(props) {
         <p>{props.meal.desc}</p>
         <div className='flex justify-between'>
           <span>${props.meal.price}</span>
-          <Counter onSub={props.onSub} onAdd={props.onAdd} meal={props.meal} />
+          <Counter meal={props.meal} />
         </div>
       </div>
 
