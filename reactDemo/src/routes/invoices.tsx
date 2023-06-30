@@ -1,10 +1,15 @@
 export default function Expenses() {
   return (
     <main style={{ padding: "1rem 0" }}>
-      <h2>Expenses</h2>
+
+      <PromptItem />
+
+  
       <Routertest />
+
     </main>
   );
 }
 
 import Routertest from "../components/Routertest";
+import PromptItem from "../components/PromptItem";

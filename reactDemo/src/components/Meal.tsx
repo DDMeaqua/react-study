@@ -1,17 +1,19 @@
 import React from 'react'
+import Counter from './Counter'
 
-export default function Meal() {
+export default function Meal(props) {
+  // console.log(props.meal);
   return (
-    <div className='flex justify-between p-4 m-2'>
+    <div className='p-4 m-2 flex border-b-2'>
       <div className='w-1/4'>
-        <img src="../../public/img/1.png" alt="" />
+        <img src={props.meal.img} alt="" />
       </div>
-      <div>
-        <h1>汉堡</h1>
-        <p>美味的汉堡</p>
+      <div className='w-3/4 p-2'>
+        <h1>{props.meal.title}</h1>
+        <p>{props.meal.desc}</p>
         <div className='flex justify-between'>
-          <span>$12</span>
-          <div>数量</div>
+          <span>${props.meal.price}</span>
+          <Counter onSub={props.onSub} onAdd={props.onAdd} meal={props.meal} />
         </div>
       </div>
 
